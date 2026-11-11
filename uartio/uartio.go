@@ -78,7 +78,7 @@ func (port Port) Int32(value int32) {
 	port.uart.Write(buffer[:digitCount])
 }
 
-func (port Port) Unit32(value uint32) {
+func (port Port) Uint32(value uint32) {
 	var buffer [10]byte // enough for uint32
 	digitCount := numfmt.AppendUint32(buffer[:0], value)
 	port.uart.Write(buffer[:digitCount])
@@ -107,9 +107,9 @@ func (port Port) Hex32(value uint32) {
 	}
 }
 
-func (port Port) Float(value float64) {
+func (port Port) FloatCenti(value float64) {
 	var buffer [16]byte // enough for float64
-	digitCount := numfmt.AppendFloat(buffer[:], value)
+	digitCount := numfmt.AppendFloatCenti(buffer[:], value)
 	port.uart.Write(buffer[:digitCount])
 }
 
